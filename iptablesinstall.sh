@@ -31,5 +31,6 @@ echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
 sysctl -p
 yum install -y iptables-services
 systemctl enable iptables
+yum install -y wget
 
 exit 0
