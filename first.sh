@@ -89,5 +89,6 @@ iptables -t nat -A POSTROUTING -p tcp -d $ip10 --dport 444 -j SNAT --to-source $
 iptables -t nat -A POSTROUTING -p udp -d $ip10 --dport 444 -j SNAT --to-source $localip
 
 service iptables save
+cat /etc/sysconfig/iptables
 
 exit 0
