@@ -38,55 +38,55 @@ read -p "源服务器ip8(本地端口1008):" ip8
 read -p "源服务器ip9(本地端口1009):" ip9
 read -p "源服务器ip10(本地端口1010):" ip10
 
-iptables -t nat -A PREROUTING -p tcp --dport 1001 -j DNAT --to-destination $ip1:1001
-iptables -t nat -A PREROUTING -p udp --dport 1001 -j DNAT --to-destination $ip1:1001
-iptables -t nat -A POSTROUTING -p tcp -d $ip1 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip1 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1001 -j DNAT --to-destination $ip1:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1001 -j DNAT --to-destination $ip1:444
+iptables -t nat -A POSTROUTING -d $ip1 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip1 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1002 -j DNAT --to-destination $ip2:1002
-iptables -t nat -A PREROUTING -p udp --dport 1002 -j DNAT --to-destination $ip2:1002
-iptables -t nat -A POSTROUTING -p tcp -d $ip2 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip2 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1002 -j DNAT --to-destination $ip2:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1002 -j DNAT --to-destination $ip2:444
+iptables -t nat -A POSTROUTING -d $ip2 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip2 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1003 -j DNAT --to-destination $ip3:1003
-iptables -t nat -A PREROUTING -p udp --dport 1003 -j DNAT --to-destination $ip3:1003
-iptables -t nat -A POSTROUTING -p tcp -d $ip3 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip3 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1003 -j DNAT --to-destination $ip3:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1003 -j DNAT --to-destination $ip3:444
+iptables -t nat -A POSTROUTING -d $ip3 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip3 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1004 -j DNAT --to-destination $ip4:1004
-iptables -t nat -A PREROUTING -p udp --dport 1004 -j DNAT --to-destination $ip4:1004
-iptables -t nat -A POSTROUTING -p tcp -d $ip4 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip4 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1004 -j DNAT --to-destination $ip4:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1004 -j DNAT --to-destination $ip4:444
+iptables -t nat -A POSTROUTING -d $ip4 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip4 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1005 -j DNAT --to-destination $ip5:1005
-iptables -t nat -A PREROUTING -p udp --dport 1005 -j DNAT --to-destination $ip5:1005
-iptables -t nat -A POSTROUTING -p tcp -d $ip5 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip5 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1005 -j DNAT --to-destination $ip5:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1005 -j DNAT --to-destination $ip5:444
+iptables -t nat -A POSTROUTING -d $ip5 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip5 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1006 -j DNAT --to-destination $ip6:1006
-iptables -t nat -A PREROUTING -p udp --dport 1006 -j DNAT --to-destination $ip6:1006
-iptables -t nat -A POSTROUTING -p tcp -d $ip6 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip6 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1006 -j DNAT --to-destination $ip6:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1006 -j DNAT --to-destination $ip6:444
+iptables -t nat -A POSTROUTING -d $ip6 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip6 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1007 -j DNAT --to-destination $ip7:1007
-iptables -t nat -A PREROUTING -p udp --dport 1007 -j DNAT --to-destination $ip7:1007
-iptables -t nat -A POSTROUTING -p tcp -d $ip7 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip7 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1007 -j DNAT --to-destination $ip7:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1007 -j DNAT --to-destination $ip7:444
+iptables -t nat -A POSTROUTING -d $ip7 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip7 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1008 -j DNAT --to-destination $ip8:1008
-iptables -t nat -A PREROUTING -p udp --dport 1008 -j DNAT --to-destination $ip8:1008
-iptables -t nat -A POSTROUTING -p tcp -d $ip8 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip8 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1008 -j DNAT --to-destination $ip8:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1008 -j DNAT --to-destination $ip8:444
+iptables -t nat -A POSTROUTING -d $ip8 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip8 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1009 -j DNAT --to-destination $ip9:1009
-iptables -t nat -A PREROUTING -p udp --dport 1009 -j DNAT --to-destination $ip9:1009
-iptables -t nat -A POSTROUTING -p tcp -d $ip9 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip9 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1009 -j DNAT --to-destination $ip9:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1009 -j DNAT --to-destination $ip9:444
+iptables -t nat -A POSTROUTING -d $ip9 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip9 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
-iptables -t nat -A PREROUTING -p tcp --dport 1010 -j DNAT --to-destination $ip10:1010
-iptables -t nat -A PREROUTING -p udp --dport 1010 -j DNAT --to-destination $ip10:1010
-iptables -t nat -A POSTROUTING -p tcp -d $ip10 --dport 444 -j SNAT --to-source $localip
-iptables -t nat -A POSTROUTING -p udp -d $ip10 --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 1010 -j DNAT --to-destination $ip10:444
+iptables -t nat -A PREROUTING -p udp -m udp --dport 1010 -j DNAT --to-destination $ip10:444
+iptables -t nat -A POSTROUTING -d $ip10 -p tcp -m tcp --dport 444 -j SNAT --to-source $localip
+iptables -t nat -A POSTROUTING -d $ip10 -p udp -m udp --dport 444 -j SNAT --to-source $localip
 
 service iptables save
 cat /etc/sysconfig/iptables
